@@ -1,3 +1,20 @@
+.card{
+    box-shadow: 5px 5px 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.card:hover{
+    position: relative;
+    bottom: 20px;
+    color: #fff !important;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
+    background-color: #f0c575 ;
+}
+
+
+
+
 .card-img-top{
     height: 16rem;
 }
