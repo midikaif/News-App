@@ -1,0 +1,19 @@
+.carousel-inner > .carousel-item > img {
+    width:81em;
+    height:32em;
+  }
+
+  .cHeader{
+    display: flex;
+    justify-content: center;
+  }
+
+  .c-img{
+    width: 56rem !important;
+    height: 30rem !important;
+  }
+  
+  .overlay{
+    
+    background: rgba(0, 0, 0, .5);
+  }
