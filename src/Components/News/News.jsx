@@ -16,7 +16,7 @@ export default class News extends Component {
 
   async componentDidMount() {
     this.setState({ loading: true })
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=e67ce43eb21548b9a76592960f15ee7b&page=${this.state.page}&pageSize=8`;
+    const url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=e67ce43eb21548b9a76592960f15ee7b&page=${this.state.page}&pageSize=8`;
     const data = await fetch(url);
     const parsedData = await data.json();
     this.setState({
@@ -25,10 +25,11 @@ export default class News extends Component {
       totalResults: parsedData.totalResults,
       page: 1
     })
+    console.log(parsedData)
   }
 
   updatePages = async () => {    
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=e67ce43eb21548b9a76592960f15ee7b&page=${this.state.page}&pageSize=8`;
+    const url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=e67ce43eb21548b9a76592960f15ee7b&page=${this.state.page}&pageSize=8`;
     const data = await fetch(url);
     const parsedData = await data.json();
     this.setState({
@@ -74,9 +75,8 @@ export default class News extends Component {
             {this.state.article.map((elem) => (
               (elem.title && elem.description && elem.urlToImage) &&
               <div key={elem.url} div className="col-md-4 my-4" >
-                  <NewsItem key={elem.url} title={elem.title} desc={elem.description} img={elem.urlToImage} url={elem.url} author={elem.author} date={elem.publishedAt}/>
+                  <NewsItem key={elem.url} title={elem.title} desc={elem.description} img={elem.urlToImage} url={elem.url} author={elem.author} date={elem.publishedAt} source={elem.source.name}/>
               </div>
-
             ))}
           </div>}
 
