@@ -16,7 +16,7 @@ export default class News extends Component {
 
   async componentDidMount() {
     this.setState({ loading: true })
-    const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=e67ce43eb21548b9a76592960f15ee7b&page=${this.state.page}&pageSize=8`;
+    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=e67ce43eb21548b9a76592960f15ee7b&page=${this.state.page}&pageSize=8`;
     const data = await fetch(url);
     const parsedData = await data.json();
     this.setState({
@@ -25,37 +25,39 @@ export default class News extends Component {
       totalResults: parsedData.totalResults,
       page: 1
     })
-    console.log(this.state);
   }
 
-  handleNext = async () => {
-    window.scrollTo(0, 0)
-    if (this.state.page + 1 <= Math.ceil(this.state.totalResults / 8)) {
-      this.setState({ loading: true })
-      const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=e67ce43eb21548b9a76592960f15ee7b&page=${this.state.page + 1}&pageSize=8`;
-      const data = await fetch(url);
-      const parsedData = await data.json();
-      this.setState({
-        loading: false,
-        article: parsedData.articles,
-        page: this.state.page + 1,
-        totalResults: parsedData.totalResults
-
-      })
-    }
-  }
-
-  handlePrevious = async () => {
-    this.setState({ loading: true })
-    const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=e67ce43eb21548b9a76592960f15ee7b&page=${this.state.page - 1}&pageSize=8`;
+  updatePages = async () => {    
+    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=e67ce43eb21548b9a76592960f15ee7b&page=${this.state.page}&pageSize=8`;
     const data = await fetch(url);
     const parsedData = await data.json();
     this.setState({
       loading: false,
       article: parsedData.articles,
-      page: this.state.page - 1,
       totalResults: parsedData.totalResults
     })
+    return parsedData;
+  }
+
+  handleNext = async () => {
+    window.scrollTo(0, 0)
+    // if (this.state.page + 1 <= Math.ceil(this.state.totalResults / 8)) {
+      await this.setState({ 
+        page: this.state.page + 1,
+        loading: true
+      })
+      this.updatePages();
+    // }
+  }
+
+  handlePrevious = async () => {
+    window.scrollTo(0, 0)
+    await this.setState({
+      page: this.state.page - 1,
+      loading: true
+    })
+    this.updatePages()
+    
   }
 
 
@@ -72,7 +74,7 @@ export default class News extends Component {
             {this.state.article.map((elem) => (
               (elem.title && elem.description && elem.urlToImage) &&
               <div key={elem.url} div className="col-md-4 my-4" >
-                <NewsItem key={elem.url} title={elem.title} desc={elem.description} img={elem.urlToImage} url={elem.url} />
+                  <NewsItem key={elem.url} title={elem.title} desc={elem.description} img={elem.urlToImage} url={elem.url} author={elem.author} date={elem.publishedAt}/>
               </div>
 
             ))}
