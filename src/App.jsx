@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar'
 import News from './Components/News/News'
 import './App.css'
+import Home from './Components/Home/Home';
 
 export default class App extends Component {
   render() {
@@ -11,7 +12,7 @@ export default class App extends Component {
         <Navbar />
         <Routes>
           <Route path='/' element={
-            <News key={'general'} category={'general'}/>
+            <Home key={'general'} category={'general'}/>
           }>
           </Route>
           <Route path='/entertainment' element={

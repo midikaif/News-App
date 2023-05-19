@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Header.css'
+import HeaderCard from './HeaderCard/HeaderCard';
 
 export default class Header extends Component {
     article = [
@@ -64,40 +65,26 @@ export default class Header extends Component {
     }
 
     render() {
+        this.setState({...this.props})
         return (
-            <div className="cHeader">
+            <>
+                <section className='hero'>
+                    <div className='container'>
+                        {this.state.article.map((elem, i) => {
+                            if (i < 5) {
+                                return (
+                                    <HeaderCard title={elem.title} author={elem.author} url={elem.url} img={elem.urlToImage} />
+                                )
+                            }
+                            return '';
+                        })}
+                        {/* <HeaderCard article={this.state.article}/>
+                        <HeaderCard article={this.state.article}/>
+                        <HeaderCard article={this.state.article}/> */}
+                    </div>
+                </section>
 
-                <div id="carouselExampleCaptions" className="carousel slide float-center" data-bs-ride="false">
-                    <div className="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                    </div>
-                    <div className="carousel-inner ">
-                        {this.state.article.map((elem,i) => (
-                            <div key={i} className={`carousel-item ${i==0 ? 'active' : ''}` }>
-                                <div className="d-block">
-                                    <img src={elem.urlToImage} className="c-img" alt="..." />
-                                    <div className="overlay"></div>
-                                </div>
-                                <div className="carousel-caption d-none d-md-block">
-                                    <h5>{elem.title}</h5>
-                                    <p>{elem.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Previous</span>
-                    </button>
-                    <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
+            </>
         )
     }
 }

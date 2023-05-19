@@ -6,16 +6,16 @@ export default class Navbar extends Component {
   render() {
     return (
       
-      <nav className="navbar navbar-expand-lg" data-bs-theme="dark" style={{ backgroundColor: '#e09f3e' }}>
+      <nav className="navbar navbar-expand-lg sticky-top" data-bs-theme="dark" style={{ backgroundColor: '#e91e63' }}>
         <div className="container-fluid">
-          <Link className="navbar-brand" to="#">Navbar</Link>
+          <Link className="navbar-brand" to="/">Navbar</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="#">Home</Link>
+                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
               </li>
               <li className='nav-item'>
                 <Link to="/business" className="nav-link"></Link>
