@@ -34,7 +34,7 @@ export default class Home extends Component {
     return (
       <>
         <NavHeader/>
-        <Header articles={this.state.article} />
+        {/* <Header articles={this.state.article} /> */}
         <HomeContent />
         <Discover />
         <Footer/>
