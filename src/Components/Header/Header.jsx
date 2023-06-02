@@ -7,7 +7,6 @@ import SliderHeaderCard from "./SliderHeader/SliderHeaderCard";
 export default class Header extends Component {
   render() {
     const { articles } = this.props;
-    console.log(articles);
     let settings = {
       dots: true,
       infinite: true,
