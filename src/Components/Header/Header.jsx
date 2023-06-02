@@ -8,7 +8,7 @@ export default class Header extends Component {
   render() {
     const { articles } = this.props;
     let settings = {
-      dots: true,
+      dots: false,
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -22,20 +22,11 @@ export default class Header extends Component {
         <section className="hero">
           <div className="container">
             {
-              articles.map((article, i) => {
-                if (i < 3) {
-                  return <HeaderCard news={article} />
-                }
-                return '';
-              })
+              articles.filter((val, i) => i < 3).map((article, i) => <HeaderCard news={article} />)
             }
             <Slider {...settings} className="boxtmp">
               {
-                articles.map((article, i) => {
-                  if (i > 2) {
-                    return <SliderHeaderCard news={article} />
-                  }
-                })
+                articles.filter((val, i) => i > 2).map(article => <SliderHeaderCard news={article} />)
               }
             </Slider>
 
