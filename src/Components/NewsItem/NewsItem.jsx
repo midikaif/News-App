@@ -9,7 +9,7 @@ export default class NewsItem extends Component {
                 <img src={img} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title text-danger">{title}
-                        <span class="badge text-bg-warning mx-2">{source}</span>
+                        <span className="badge text-bg-warning mx-2">{source}</span>
                     </h5>
                     <p className="card-text">{desc}</p>
                     <p className="card-text"><small className='text-muted'> Published by {author ? author : 'Unknown'} at {new Date(date).toGMTString()}</small></p>
