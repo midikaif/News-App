@@ -13,7 +13,6 @@ export default class App extends Component {
         {/* <Navbar /> */}
         <Routes>
           <Route path='/' element={
-            // <News key={'entertainment'} category={'entertainment'} />
 
             <Home key={'general'} apiKey={this.apiKey} category={'general'}/>
           }>

@@ -23,9 +23,7 @@ export default class Popular extends Component {
           breakpoint: 800,
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1,
-            // infinite: true,
-            // rows: 4,
+            slidesToScroll: 1
           }
         }      
       ]
