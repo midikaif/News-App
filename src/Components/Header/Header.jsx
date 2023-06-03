@@ -21,12 +21,12 @@ export default class Header extends Component {
       <>
         <section className="hero">
           <div className="container">
+          {/* <HeaderCard />
           <HeaderCard />
-          <HeaderCard />
-          <HeaderCard />
-            {/* {
+          <HeaderCard /> */}
+            {
               articles.filter((val, i) => i < 3).map((article, i) => <HeaderCard />)
-            } */}
+            }
             <Slider {...settings} className="boxtmp">
               <SliderHeaderCard />
               <SliderHeaderCard />

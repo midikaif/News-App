@@ -22,7 +22,7 @@ export default function Home({ apiKey }) {
   return (
     <>
       <NavHeader />
-      <Header />
+      <Header articles={articles}/>
       <HomeContent />
       <Discover />
       <Footer />
