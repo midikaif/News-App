@@ -8,16 +8,16 @@ export default class SliderHeaderCard extends Component {
         return (
             <div className='slider-box'>
                 <div className='img'>
-                    <img src={news.urlToImage?news.urlToImage:cover} alt='' />
+                    <img src={cover} alt='' />
                 </div>
                 <div className='text'>
-                    <span className='category'>{news.source.name?news.source.name:'Unknown'}</span>
+                    <span className='category'>{'Unknown'}</span>
                     <a>
-                        <h1 className='titleBg'>{news.title?news.title:'Unknown'}</h1>
+                        <h1 className='titleBg'>{'Unknown'}</h1>
                     </a>
                     <div className='author'>
-                        <span>by '{news.author?news.author:'Unknown'}'</span>
-                        <span>{new Date(news.publishedAt).toGMTString()}</span>
+                        <span>by '{'Unknown'}'</span>
+                        <span>{'new Date().toGMTString()'}</span>
                     </div>
                 </div>
             </div>
