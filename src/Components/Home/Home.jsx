@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Header from "../Header/Header";
 import HomeContent from "../HomeContent/HomeContent";
@@ -6,39 +6,26 @@ import Discover from "../Discover/Discover";
 import Footer from "../Footer/Footer";
 import NavHeader from "../NavHeader/NavHeader";
 
-export default class Home extends Component {
-  constructor() {
-    super();
-    this.state = {
-      article: [],
-      loading: false,
-      page: 1,
-    };
-  }
+export default function Home({ apiKey }) {
+  const [articles, setArticles] = useState([])
 
-  async componentDidMount() {
 
-    this.setState({ loading: true });
-    const url = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${this.props.apiKey}`;
-    const data = await fetch(url);
-    const parsedData = await data.json();
-    this.setState({
-      loading: false,
-      article: parsedData.articles,
-      totalResults: parsedData.totalResults,
-      page: 1,
-    });
-  }
+  useEffect(() => {
+    (async () => {
+      const url = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${apiKey}`;
+      const data = await fetch(url);
+      const parsedData = await data.json();
+      setArticles(parsedData.articles);
+    })()
+  })
 
-  render() {
-    return (
-      <>
-        <NavHeader/>
-        <Header articles={this.state.article} />
-        <HomeContent />
-        <Discover />
-        <Footer/>
-      </>
-    );
-  }
+  return (
+    <>
+      <NavHeader />
+      <Header articles={articles} />
+      <HomeContent />
+      <Discover />
+      <Footer />
+    </>
+  )
 }
