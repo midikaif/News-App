@@ -10,19 +10,19 @@ export default function Home({ apiKey }) {
   const [articles, setArticles] = useState([])
 
 
-  useEffect(() => {
-    (async () => {
-      const url = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${apiKey}`;
-      const data = await fetch(url);
-      const parsedData = await data.json();
-      setArticles(parsedData.articles);
-    })()
-  })
+  // useEffect(() => {
+  //   (async () => {
+  //     const url = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${apiKey}`;
+  //     const data = await fetch(url);
+  //     const parsedData = await data.json();
+  //     setArticles(parsedData.articles);
+  //   })()
+  // })
 
   return (
     <>
       <NavHeader />
-      <Header articles={articles} />
+      <Header />
       <HomeContent />
       <Discover />
       <Footer />
