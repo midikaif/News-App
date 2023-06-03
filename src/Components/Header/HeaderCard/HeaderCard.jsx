@@ -8,7 +8,7 @@ export default class HeaderCard extends Component {
         return (
             <div className='box'>
                 <div className='img'>
-                    <img src={news.urlToImage?news.urlToImage:cover} alt='' />
+                    <img src={cover} alt='' />
                 </div>
                 <div className='text'>
                     <span className='category'>{'Unknown'}</span>

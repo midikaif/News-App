@@ -21,9 +21,9 @@ export default class Header extends Component {
       <>
         <section className="hero">
           <div className="container">
-          <HeaderCard article1={articles[0]} />
-          <HeaderCard article1={articles[1]}/>
-          <HeaderCard article1={articles[2]}/>
+          <HeaderCard />
+          <HeaderCard />
+          <HeaderCard />
             {/* {
               articles.filter((val, i) => i < 3).map((article, i) => <HeaderCard />)
             } */}

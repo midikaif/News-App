@@ -12,7 +12,8 @@ export default function Home({ apiKey }) {
 
   useEffect(() => {
     (async () => {
-      const url = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${apiKey}`;
+      const url = `https://mycrmserver.netlify.app/api/customer/page/1`;
+      // const url = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${apiKey}`;
       const data = await fetch(url);
       const parsedData = await data.json();
       setArticles(parsedData.articles);
@@ -21,8 +22,11 @@ export default function Home({ apiKey }) {
 
   return (
     <>
+      <div>
+        {articles}
+      </div>
       <NavHeader />
-      <Header articles={articles}/>
+      <Header />
       <HomeContent />
       <Discover />
       <Footer />
