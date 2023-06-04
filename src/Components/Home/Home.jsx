@@ -11,22 +11,15 @@ export default function Home({ apiKey }) {
 
 
   useEffect(() => {
-    (async () => {
-      const url = `https://mycrmserver.netlify.app/api/customer/page/1`;
-      // const url = `https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${apiKey}`;
-      const data = await fetch(url);
-      const parsedData = await data.json();
-      setArticles(parsedData.articles);
-    })()
-  })
+    fetch('https://api.newscatcherapi.com/v2/latest_headlines?countries=IN')
+      .then((res) => res.json())
+      .then((res) => setArticles(parsedData.articles))
+  }, [])
 
   return (
     <>
-      <div>
-        {articles}
-      </div>
       <NavHeader />
-      <Header />
+      <Header articles={articles} />
       <HomeContent />
       <Discover />
       <Footer />

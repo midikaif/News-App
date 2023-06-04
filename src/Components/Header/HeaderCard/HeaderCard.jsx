@@ -4,11 +4,11 @@ import './HeaderCard.css'
 
 export default class HeaderCard extends Component {
     render() {
-    const {news} = this.props;
+        const { news } = this.props;
         return (
             <div className='box'>
                 <div className='img'>
-                    <img src={cover} alt='' />
+                    <img src={news.media ? news.media : cover} alt='' />
                 </div>
                 <div className='text'>
                     <span className='category'>{'Unknown'}</span>
