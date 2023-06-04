@@ -13,7 +13,7 @@ export default function Home({ apiKey }) {
   useEffect(() => {
     fetch('https://api.newscatcherapi.com/v2/latest_headlines?countries=IN')
       .then((res) => res.json())
-      .then((res) => setArticles(parsedData.articles))
+      .then((res) => setArticles(res.articles))
   }, [])
 
   return (
