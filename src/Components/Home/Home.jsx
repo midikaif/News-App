@@ -11,7 +11,12 @@ export default function Home({ apiKey }) {
 
 
   useEffect(() => {
-    fetch('https://api.newscatcherapi.com/v2/latest_headlines?countries=IN')
+    fetch('https://api.newscatcherapi.com/v2/latest_headlines?countries=IN',
+      {
+        headers: {
+          'x-api-key': 'Dzbe9a2RhmUfxBWfGd-w5ByiclQvfO9Q44KCsD1Q49g'
+        }
+      })
       .then((res) => res.json())
       .then((res) => setArticles(res.articles))
   }, [])

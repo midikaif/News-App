@@ -25,7 +25,7 @@ export default class Header extends Component {
           <HeaderCard />
           <HeaderCard /> */}
             {
-              articles.filter((val, i) => i < 3).map(article => <HeaderCard article={article}/>)
+              articles && articles.filter((val, i) => i < 3).map(article => <HeaderCard news={article}/>)
             }
             <Slider {...settings} className="boxtmp">
               <SliderHeaderCard />
